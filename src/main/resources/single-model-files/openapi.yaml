@@ -1,0 +1,47 @@
+openapi: 3.0.3
+info:
+  title: Smooth Systems Solutions - OpenApi examples
+  description: 'Provides simple use-cases how to use openapi'
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /api/customers:
+    get:
+      tags:
+      - customers
+      description: Retrieve simple customer
+      operationId: getCustomer
+      parameters:
+      - name: customerId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerDto'
+        404:
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponseDto'
+
+components:
+  schemas:
+    CustomerDto:
+      required:
+        - id
+      title: ConfirmationDto
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+    ErrorResponseDto:
+      $ref: "./models/ErrorResponseDto.yaml"

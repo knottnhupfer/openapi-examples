@@ -1,0 +1,11 @@
+required:
+- errorCode
+- errorMessage
+type: object
+properties:
+  errorCode:
+    type: string
+    example: TASK_NOT_FOUND
+  errorMessage:
+    type: string
+    example: Es wurde kein Task mit der id 'IdontExist' gefunden.
